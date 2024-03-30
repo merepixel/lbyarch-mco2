@@ -8,20 +8,21 @@ global dotProductx64
 extern printf
 
 dotProductx64:
+    push rbp
+    mov rbp, rsp
+    add rbp, 16
+
     mov rax, rcx
     xorpd xmm1, xmm1
-    xor rdx, rdx  
-
+    xor rbx, rbx  
 compute_product:
-    movsd xmm0, [rdx + r8]  
-    mulsd xmm0, [r10 + r9] 
+    movsd xmm0, [rbx + r8]  
+    mulsd xmm0, [rbx + r9] 
     addsd xmm1, xmm0       
     add rdx, 8                
     cmp rdx, rax       
     jne compute_product          
                      
-    movsd [rsi], xmm1          
+    movsd xmm2, xmm1  
+    pop rbp
     ret
-    xor rax, rax
-    ret
-    
