@@ -2,11 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-extern void x8664 ();
 
-
-void dotProductx86(size_t n, double* result, double* arr1, double* arr2) {
-}
+extern double dotProductx64(size_t n, double* result, double* arr1, double* arr2);
 
 void dotProduct(size_t n, double* result, double* arr1, double* arr2) {
     int i;
@@ -61,13 +58,13 @@ int main() {
     printf("C functions takes %lf milliseconds for array size %zu \n", average_time, N);
 
 // -------------x86-64-------------
-    x8664(N, answer2, array1, array2);
+    dotProductx64(N, answer2, array1, array2);
 
     int loop = 30;
 
     begin = clock();
         for(int j=0; j<loop; j++) {
-            dotProduct(N, answer2, array1, array2);
+            dotProductx64(N, answer2, array1, array2);
         }
     end = clock();
 
