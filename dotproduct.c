@@ -24,10 +24,11 @@ int main() {
     double* array1;
     double* array2;
     double* answer1;
+    double* answer2;
     array1 = (double*)malloc(N * sizeof(double));
     array2 = (double*)malloc(N * sizeof(double));
     answer1 = (double*)malloc(N * sizeof(double));
-
+    answer2 = (double*)malloc(N * sizeof(double));
     int i;
     for (i = 0; i < N; i++) {
         array1[i] = 1;
@@ -51,13 +52,11 @@ int main() {
 
     printf("C functions take %lf milliseconds for array size %zu \n", average_time, N);
 
-    free(array1);
-    free(array2);
-    free(answer1);
+    
 
 
 // -------------x86-64-------------
-    /*dotProductx64(N, answer2, array1, array2);
+    dotProductx64(N, answer2, array1, array2);
 
     int loop2 = 30;
     int k;
@@ -70,13 +69,9 @@ int main() {
 
     time_taken = ((double)(end-begin)) * 1e3 / CLOCKS_PER_SEC;
     average_time = time_taken / loop2;
-    
+
     printf("C functions takes %lf milliseconds for array size %zu \n", average_time, N);
 
-    free(array1);
-    free(array2);
-    free(answer2);
-    */
 
     return 0;
 
